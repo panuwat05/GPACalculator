@@ -1,4 +1,11 @@
-﻿classDiagram
+﻿# GPA Calculator System Design
+
+## Class Diagram
+
+The following class diagram represents the structure of the GPA calculator system, showing the relationship between the `Form1` and `GPACalculator` classes.
+
+```mermaid
+classDiagram
     class GPACalculator {
         +double gpa_sum
         +int n
