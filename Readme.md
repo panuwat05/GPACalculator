@@ -1,54 +1,29 @@
-﻿# Basketball Club System Design
-
-## Class Diagram
-
-using System.Collections.Generic;
-using System.Numerics;
-using System.Security.Policy;
-using System.Text.RegularExpressions;
-
-The following class diagram represents the structure of the basketball club system, including classes for teams, players, managers, and matches.
-
-```mermaid
-classDiagram
-    class Team
-{
-        +string teamName
-        +int teamID
-        +list players
-        +addPlayer(player: Player)
-        +removePlayer(player: Player)
+﻿classDiagram
+    class GPACalculator {
+        +double gpa_sum
+        +int n
+        +double gpa_min
+        +double gpa_max
+        +setGPA(gpa: double)
+        +getMaxGPA() : double
+        +getMinGPA() : double
+        +getGPAX() : double
+        +getStudentCount() : int
     }
 
-class Player
-{
-        +string playerName
-        +int playerID
-        +string position
-        +int score
-        +playGame(match: Match)
-        +scorePoints(points: int)
+    class Form1 {
+        +GPACalculator gPACalculator
+        +TextBox tbInputGpa
+        +TextBox tbGpax
+        +TextBox tbGpaMax
+        +TextBox tbGpaMin
+        +TextBox tbStudentCount
+        +Button btnAdd
+        +Button btnClear
+        +btnAdd_Click(sender: object, e: EventArgs)
+        +btnClear_Click(sender: object, e: EventArgs)
+        +UpdateDisplay()
     }
 
-class Manager
-{
-        +string managerName
-        +int managerID
-        +scheduleMatch(match: Match)
-        +organizeTeam(team: Team)
-    }
-
-class Match
-{
-        +string matchDate
-        +Team team1
-        +Team team2
-        +string result
-        +startMatch()
-        +endMatch()
-    }
-
-Team "1" o-- "*" Player : has
-Manager "1" o-- "*" Team : manages
-Manager "1" o-- "*" Match : organizes
-Match "1" o-- "2" Team : includes
+    GPACalculator "1" o-- "*" Form1 : uses
+    Form1 "1" o-- "1" GPACalculator : contains
